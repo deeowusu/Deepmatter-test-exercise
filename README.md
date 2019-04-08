@@ -45,3 +45,5 @@ Extract the the "chromedriver_win32 (1).zip" file
 Copy the "chromedriver.exe" file from the extracted folder and paste in the C drive.
 
 Your machine should be all set for Selenium WebDriver
+
+Once the classes have been created (as described on Line 27) for the five scenarios, copy from the attached files ("Scenario 1". "Scenario 2", "Scenario 3", "Scenario 4", "Scenario 5") and paste in the respective classes in the Eclipse IDE.
