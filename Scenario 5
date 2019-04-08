@@ -1,0 +1,55 @@
+package newpackage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ScenarioFive {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		//Open browser
+		WebDriver driver = new ChromeDriver();
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+		
+		driver.manage().window().maximize();
+		
+		//Navigate to the deepmatter website
+		driver.get("https://www.deepmatter.io/");
+		
+		Thread.sleep(3000);
+		
+		//Scroll to the Careers tab at the bottom of the page and click on it
+		WebElement careerElement = driver.findElement(By.linkText("Careers"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", careerElement);
+		
+		careerElement.click();
+		
+		Thread.sleep(2000);
+		
+		//Search for Test Engineer vacancy in Glasgow
+		if(driver.getPageSource().contains("Test Engineer - Glasgow")) {
+			System.out.println("Test Engineer Vacancy Found");
+			
+			//Scroll to the test engineer vacancy
+			WebElement testVacancy = driver.findElement(By.xpath("//*[@id=\"block-yui_3_17_2_1_1549530785332_53690\"]/div/h2"));
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", testVacancy);
+			Thread.sleep(2000);
+			
+		}
+		//Indicate if test engineer vacancy is not found and navigate to home page
+		else {
+			System.out.println("No Test Engineer Vacancy Found");
+			
+			Thread.sleep(2000);
+			
+			driver.findElement(By.linkText("Deepmatter hompage")).click();
+						
+		}
+
+	}
+
+}
