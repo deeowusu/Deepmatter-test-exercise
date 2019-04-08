@@ -1,0 +1,41 @@
+package newpackage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ScenarioOne {
+
+	public static void main(String[] args) {
+		
+		//Open browser
+		WebDriver driver = new ChromeDriver();
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+		
+		driver.manage().window().maximize();
+		
+		//Navigate to Google
+		driver.get("https://www.google.co.uk");
+		
+		WebElement SearchName = driver.findElement(By.name("q"));
+		
+		//Perform a seacrch of the word "deepmatter"
+		SearchName.sendKeys("deepmatter");
+		
+		SearchName.submit();
+		
+		WebElement websiteName = driver.findElement(By.partialLinkText("https://www.deepmatter.io"));
+		
+		//Verify that the deepmater site is present in the search results or not
+		if(websiteName.isDisplayed())
+		{
+			System.out.println("DeepMatter website is present");
+		}
+		else {
+			System.out.println("DeepMatter website is NOT present");
+		}
+	}
+
+}
