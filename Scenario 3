@@ -1,0 +1,67 @@
+package newpackage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ScenarioThree {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		//Open browser
+		WebDriver driver = new ChromeDriver();
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+		
+		driver.manage().window().maximize();
+		
+		//Navigate to the deepmatter website
+		driver.get("https://www.deepmatter.io/");
+		
+		Thread.sleep(2000);
+		
+		//Navigate to the ‘Join Us’ area at the bottom of the page
+		WebElement joinUsElement = driver.findElement(By.xpath("//*[@id=\"block-4030cba7a9a65352d8a3\"]/div/h2"));
+		
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", joinUsElement);
+		
+		Thread.sleep(1000);
+		
+		//Enter the first name and last name and submit
+		WebElement firstName = driver.findElement(By.name("fname"));
+		
+		firstName.sendKeys("Dennis");
+		
+		WebElement lastName = driver.findElement(By.name("lname"));
+		
+		lastName.sendKeys("Owusu");
+		
+		WebElement submit = driver.findElement(By.xpath("//*[@id=\"block-yui_3_17_2_1_1526047542039_24778\"]/div/div/div/form/div[2]/input"));
+		
+		submit.click();
+		
+		Thread.sleep(3000);
+		
+		//Verify that error message is displayed
+		String expectedErrorMsg = "Email address is required.";
+		
+		String actualErrorMsg = "";
+		
+		actualErrorMsg = driver.findElement(By.xpath("//*[@id=\"email-yui_3_17_2_1_1526047542039_24784\"]/div[@class='field-error']")).getText();
+		
+		System.out.println("The actual error message is: "+actualErrorMsg);
+		
+		//Verify that the error text contains “Email address is required.”
+		if(actualErrorMsg.equalsIgnoreCase(expectedErrorMsg)){
+			
+			System.out.println("The error message is verified as containing the expected error message.");
+		}
+		
+		else {
+			System.out.println("The error message is NOT the same as the expected");
+		}
+	}
+
+}
