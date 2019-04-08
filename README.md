@@ -24,7 +24,7 @@ A pop-up window will open to name the package,
 Enter the name of the package
 Click on Finish button
 
-7. Create a new Java class under newpackage by right-clicking on it and then selecting- New > Class, and then name it as "ScenarioOne".
+7. Create a new Java class under newpackage by right-clicking on it and then selecting- New > Class, and then name it as "ScenarioOne". (Repeat this step for all five scenarios, name the scenarios as ScenarioOne, ScenarioTwo, ScenarioThree, ScenarioFour, ScenarioFive)
 
 When you click on Class, a pop-up window will open, enter details as
 Name of the class
@@ -41,3 +41,7 @@ Also add the "commons-io-2.6.jar" file from the "commons-io-2.6-bin" file extrac
 
 Once done, click "Apply and Close" button
 
+Extract the the "chromedriver_win32 (1).zip" file
+Copy the "chromedriver.exe" file from the extracted folder and paste in the C drive.
+
+Your machine should be all set for Selenium WebDriver
