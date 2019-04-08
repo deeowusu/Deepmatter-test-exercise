@@ -1,0 +1,42 @@
+package newpackage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ScenarioTwo {
+
+	public static void main(String[] args) throws Exception {
+		
+		//Open browser
+		WebDriver driver = new ChromeDriver();
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+		
+		driver.manage().window().maximize();
+		
+		//Navigate to the deepmatter website
+		driver.get("https://www.deepmatter.io/");
+		
+		String expectedURL = "http://deepmattergroup.com/";
+		
+		String actualURL = "";
+		
+		//Get the URL of the Investor relations link
+		actualURL = driver.findElement(By.partialLinkText("Investor relations")).getAttribute("href");
+		
+		System.out.println("The Attribute of the Investor relations link is: "+actualURL);
+		
+		Thread.sleep(2000);
+		
+		//Verify if the Investor relations link is the same as the expected URL
+		if(actualURL.contentEquals(expectedURL)) {
+			System.out.println("The the target for the investor relations link is “http://deepmattergroup.com/”");
+		}
+		else {
+			System.out.println("The investor relations link is NOT “http://deepmattergroup.com/");
+		}
+		
+	}
+
+}
